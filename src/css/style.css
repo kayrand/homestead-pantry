@@ -1,0 +1,304 @@
+/* ---- Farmhouse Sage palette + fonts ---- */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Nunito+Sans:wght@400;600;700&display=swap");
+
+:root {
+  --sage: #6e7f5e;
+  --sage-dark: #4f5c42;
+  --clay: #d99873;
+  --clay-dark: #c17a54;
+  --wheat: #e6c98f;
+  --cream: #f5f3ec;
+  --card: #ffffff;
+  --text: #3d3a33;
+  --muted: #7a7266;
+  --border: #e0dccf;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  color: var(--sage-dark);
+}
+
+a {
+  color: var(--sage);
+}
+
+main {
+  flex: 1;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ---- Header ---- */
+#main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.logo-jar {
+  width: 34px;
+  height: 34px;
+}
+.logo a {
+  font-family: "Fraunces", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--sage-dark);
+  text-decoration: none;
+}
+nav {
+  display: flex;
+  gap: 1.5rem;
+  font-weight: 600;
+}
+nav a {
+  color: var(--text);
+  text-decoration: none;
+}
+nav a:hover {
+  color: var(--sage);
+}
+
+/* ---- Footer ---- */
+#main-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ---- Hero ---- */
+.hero {
+  background: var(--sage);
+  color: var(--cream);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  color: var(--cream);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+.hero p {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-block;
+  background: var(--clay);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.5rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+.btn:hover {
+  background: var(--clay-dark);
+  transform: translateY(-1px);
+}
+
+/* ---- Category tiles (home) ---- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 600px;
+  margin: 2rem auto 0;
+}
+.category-grid a {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.category-grid a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ---- Alerts ---- */
+.alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  max-width: 500px;
+}
+.alert p {
+  margin: 0;
+}
+.alert-close {
+  cursor: pointer;
+  font-weight: 700;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+}
+.alert--success {
+  background: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+.alert--error {
+  background: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+@media (max-width: 600px) {
+  nav {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ---- Pantry form ---- */
+.pantry-form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+.pantry-form label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--sage-dark);
+  margin-bottom: 1rem;
+}
+.pantry-form input,
+.pantry-form select {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  margin-top: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  background: var(--cream);
+  color: var(--text);
+  transition: border-color 0.2s ease;
+}
+.pantry-form input:focus,
+.pantry-form select:focus {
+  outline: none;
+  border-color: var(--sage);
+}
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+.form-row label {
+  flex: 1;
+}
+
+/* ---- Pantry grid ---- */
+.pantry-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+.jar-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.jar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+.jar-cat {
+  display: inline-block;
+  background: var(--wheat);
+  color: var(--sage-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+.jar-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+.jar-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.jar-remove {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--clay);
+}
+.jar-remove:hover {
+  color: var(--clay-dark);
+}
+.empty {
+  color: var(--muted);
+  font-style: italic;
+}

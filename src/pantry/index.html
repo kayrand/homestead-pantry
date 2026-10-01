@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="View and manage your preserved food pantry."
+    />
+    <title>Homestead Pantry | My Pantry</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script type="module" src="/js/pantry.js"></script>
+  </head>
+
+  <body>
+    <header id="main-header" class="divider"></header>
+
+    <main>
+      <h1>My Pantry</h1>
+
+      <section class="add-section">
+        <h2>Add an item</h2>
+        <form id="addItemForm" class="pantry-form">
+          <label>
+            Item name
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            Category
+            <select name="category" required>
+              <option value="">Choose...</option>
+              <option value="Jams">Jams</option>
+              <option value="Sauces">Sauces</option>
+              <option value="Pickles">Pickles</option>
+              <option value="Dried">Dried</option>
+              <option value="Ferments">Ferments</option>
+            </select>
+          </label>
+
+          <div class="form-row">
+            <label>
+              Quantity
+              <input type="number" name="quantity" min="1" value="1" required />
+            </label>
+            <label>
+              Expiration date
+              <input type="date" name="expiration" required />
+            </label>
+          </div>
+
+          <button type="submit" class="btn">Add to pantry</button>
+        </form>
+      </section>
+
+      <section class="pantry-section">
+        <h2>Your items</h2>
+        <ul id="pantryList" class="pantry-grid"></ul>
+      </section>
+    </main>
+
+    <footer id="main-footer"></footer>
+  </body>
+</html>
