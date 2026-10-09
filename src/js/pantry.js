@@ -10,8 +10,15 @@ const formElement = document.querySelector("#addItemForm");
 const pantryList = new PantryList("pantry-items", listElement);
 pantryList.render();
 
-// when a new item is added, re-render the list
 const pantryForm = new PantryForm("pantry-items", formElement, () => {
   pantryList.render();
 });
 pantryForm.init();
+
+// search and filter
+document.querySelector("#pantrySearch").addEventListener("input", (e) => {
+  pantryList.setSearch(e.target.value);
+});
+document.querySelector("#pantryFilter").addEventListener("change", (e) => {
+  pantryList.setFilter(e.target.value);
+});

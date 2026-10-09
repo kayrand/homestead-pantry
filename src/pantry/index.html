@@ -16,8 +16,12 @@
     <header id="main-header" class="divider"></header>
 
     <main>
-      <h1>My Pantry</h1>
-
+      <section class="hero">
+        <h1>My Pantry</h1>
+        <p>
+          See everything you have put up and keep track of what to use next.
+        </p>
+      </section>
       <section class="add-section">
         <h2>Add an item</h2>
         <form id="addItemForm" class="pantry-form">
@@ -30,11 +34,11 @@
             Category
             <select name="category" required>
               <option value="">Choose...</option>
-              <option value="Jams">Jams</option>
+              <option value="Fruits">Fruits</option>
+              <option value="Vegetables">Vegetables</option>
               <option value="Sauces">Sauces</option>
               <option value="Pickles">Pickles</option>
-              <option value="Dried">Dried</option>
-              <option value="Ferments">Ferments</option>
+              <option value="Dried Goods">Dried Goods</option>
             </select>
           </label>
 
@@ -55,6 +59,31 @@
 
       <section class="pantry-section">
         <h2>Your items</h2>
+
+        <div class="pantry-stats">
+          <div class="stat">
+            <span id="statTotal">0</span><small>Items</small>
+          </div>
+          <div class="stat">
+            <span id="statSoon">0</span><small>Expiring soon</small>
+          </div>
+          <div class="stat">
+            <span id="statCats">0</span><small>Categories</small>
+          </div>
+        </div>
+
+        <div class="pantry-controls">
+          <input type="text" id="pantrySearch" placeholder="Search items..." />
+          <select id="pantryFilter">
+            <option value="">All categories</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Sauces">Sauces</option>
+            <option value="Pickles">Pickles</option>
+            <option value="Dried Goods">Dried Goods</option>
+          </select>
+        </div>
+
         <ul id="pantryList" class="pantry-grid"></ul>
       </section>
     </main>

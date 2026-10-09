@@ -52,15 +52,20 @@ async function loadTemplate(path) {
 
 // load the header and footer partials into the page
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate(
-    `${import.meta.env.BASE_URL}partials/header.html`,
-  );
-  const footerTemplate = await loadTemplate(
-    `${import.meta.env.BASE_URL}partials/footer.html`,
-  );
+  const base = import.meta.env.BASE_URL;
+  const headerTemplate = await loadTemplate(`${base}partials/header.html`);
+  const footerTemplate = await loadTemplate(`${base}partials/footer.html`);
   const headerElement = document.querySelector("#main-header");
   const footerElement = document.querySelector("#main-footer");
-  if (headerElement) renderWithTemplate(headerTemplate, headerElement);
+  if (headerElement) {
+    renderWithTemplate(headerTemplate, headerElement);
+    headerElement.querySelectorAll("a[href^='/']").forEach((link) => {
+      link.setAttribute(
+        "href",
+        base.replace(/\/$/, "") + link.getAttribute("href"),
+      );
+    });
+  }
   if (footerElement) renderWithTemplate(footerTemplate, footerElement);
 }
 

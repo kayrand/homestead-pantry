@@ -53,12 +53,18 @@ main {
 
 /* ---- Header ---- */
 #main-header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.5rem;
   background: var(--card);
   border-bottom: 1px solid var(--border);
+}
+#main-header nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .logo {
   display: flex;
@@ -195,15 +201,6 @@ nav a:hover {
   border: 1px solid #f5c2c7;
 }
 
-@media (max-width: 600px) {
-  nav {
-    gap: 1rem;
-    font-size: 0.9rem;
-  }
-  .category-grid {
-    grid-template-columns: 1fr;
-  }
-}
 /* ---- Pantry form ---- */
 .pantry-form {
   background: var(--card);
@@ -301,4 +298,209 @@ nav a:hover {
 .empty {
   color: var(--muted);
   font-style: italic;
+}
+
+/* ---- Pantry stats + controls ---- */
+.pantry-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.pantry-stats .stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+}
+.pantry-stats .stat span {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-size: 1.5rem;
+  color: var(--sage);
+}
+.pantry-stats .stat small {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.pantry-controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.pantry-controls input,
+.pantry-controls select {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  background: var(--card);
+}
+.pantry-controls input {
+  flex: 1;
+  min-width: 180px;
+}
+.exp-soon {
+  color: var(--clay);
+  font-weight: 700;
+}
+
+/* ---- Recipe search ---- */
+.search-form {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+  max-width: 500px;
+}
+.search-form input {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  background: var(--card);
+}
+.recipe-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+.recipe-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.recipe-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+.recipe-card a {
+  text-decoration: none;
+  color: var(--text);
+}
+.recipe-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+.recipe-card h3 {
+  font-size: 1rem;
+  padding: 0.75rem;
+}
+.fav-remove {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  background: var(--card);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--clay);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+.fav-remove:hover {
+  color: var(--clay-dark);
+}
+
+/* ---- Recipe detail ---- */
+.back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+.recipe-head {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.recipe-img {
+  width: 280px;
+  max-width: 100%;
+  border-radius: var(--radius);
+}
+.recipe-cat {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.recipe-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.panel h2 {
+  margin-bottom: 1rem;
+}
+.ingredients {
+  list-style: none;
+}
+.ingredients li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.nutrition {
+  margin-top: 1.5rem;
+  background: var(--cream);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.nutri-list {
+  list-style: none;
+}
+.nutri-list li {
+  padding: 0.2rem 0;
+}
+.src {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+.muted {
+  color: var(--muted);
+}
+
+@media (max-width: 700px) {
+  .recipe-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  #main-header nav {
+    position: static;
+    transform: none;
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+  .pantry-stats {
+    flex-wrap: wrap;
+  }
 }
