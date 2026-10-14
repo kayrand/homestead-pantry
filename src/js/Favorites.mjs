@@ -3,7 +3,7 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 function favoriteCardTemplate(recipe) {
   return `<li class="recipe-card">
     <span class="fav-remove" data-id="${recipe.idMeal}" title="Remove">&times;</span>
-    <a href="/recipes/index.html?id=${recipe.idMeal}">
+    <a href="../recipes/index.html?id=${recipe.idMeal}">
       <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}" loading="lazy" />
       <h3>${recipe.strMeal}</h3>
     </a>

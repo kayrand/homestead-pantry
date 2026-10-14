@@ -19,7 +19,6 @@ export default class RecipeDetails {
     this.loadNutrition();
   }
 
-  // pull ingredient + measure pairs out of the recipe object
   getIngredients() {
     const list = [];
     for (let i = 1; i <= 20; i++) {
@@ -39,7 +38,7 @@ export default class RecipeDetails {
       .join("");
 
     this.detailElement.innerHTML = `
-      <a href="/recipes/index.html" class="back">&larr; Back to search</a>
+      <a href="index.html" class="back">&larr; Back to search</a>
       <div class="hero">
         <h1>${r.strMeal}</h1>
         <p>${r.strCategory} &middot; ${r.strArea}</p>
@@ -68,23 +67,30 @@ export default class RecipeDetails {
   }
 
   async loadNutrition() {
-    const term = this.recipe.strCategory || this.recipe.strMeal;
-    const product = await this.dataSource.getNutrition(term);
     const box = document.querySelector("#nutrition");
-    if (product && product.nutriments) {
-      const n = product.nutriments;
-      box.innerHTML = `
-        <h3>Nutrition (per 100g)</h3>
-        <ul class="nutri-list">
-          <li>Calories: ${n["energy-kcal_100g"] ?? "n/a"}</li>
-          <li>Protein: ${n["proteins_100g"] ?? "n/a"} g</li>
-          <li>Fat: ${n["fat_100g"] ?? "n/a"} g</li>
-          <li>Carbs: ${n["carbohydrates_100g"] ?? "n/a"} g</li>
-        </ul>
-        <p class="src">Nutrition data from Open Food Facts</p>
-      `;
-    } else {
-      box.innerHTML = `<h3>Nutrition</h3><p class="muted">No nutrition data found.</p>`;
+    try {
+      const term =
+        this.recipe.strIngredient1 ||
+        this.recipe.strCategory ||
+        this.recipe.strMeal;
+      const product = await this.dataSource.getNutrition(term);
+      if (product && product.nutriments) {
+        const n = product.nutriments;
+        box.innerHTML = `
+          <h3>Nutrition (per 100g)</h3>
+          <ul class="nutri-list">
+            <li>Calories: ${n["energy-kcal_100g"] ?? "n/a"}</li>
+            <li>Protein: ${n["proteins_100g"] ?? "n/a"} g</li>
+            <li>Fat: ${n["fat_100g"] ?? "n/a"} g</li>
+            <li>Carbs: ${n["carbohydrates_100g"] ?? "n/a"} g</li>
+          </ul>
+          <p class="src">Nutrition data from Open Food Facts</p>
+        `;
+      } else {
+        box.innerHTML = `<h3>Nutrition</h3><p class="muted">No nutrition data found.</p>`;
+      }
+    } catch (err) {
+      box.innerHTML = `<h3>Nutrition</h3><p class="muted">Nutrition info is unavailable right now.</p>`;
     }
   }
 
