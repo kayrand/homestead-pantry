@@ -503,4 +503,55 @@ nav a:hover {
   .pantry-stats {
     flex-wrap: wrap;
   }
+  /* ---- Page load animation ---- */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .jar-card,
+  .recipe-card,
+  .category-grid a {
+    animation: fadeInUp 0.3s ease-out both;
+  }
+
+  /* stagger the cards slightly so they cascade in */
+  .pantry-grid li:nth-child(1),
+  .recipe-grid li:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .pantry-grid li:nth-child(2),
+  .recipe-grid li:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+  .pantry-grid li:nth-child(3),
+  .recipe-grid li:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+  .pantry-grid li:nth-child(4),
+  .recipe-grid li:nth-child(4) {
+    animation-delay: 0.24s;
+  }
+  .pantry-grid li:nth-child(5),
+  .recipe-grid li:nth-child(5) {
+    animation-delay: 0.32s;
+  }
+  .pantry-grid li:nth-child(6),
+  .recipe-grid li:nth-child(6) {
+    animation-delay: 0.4s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .jar-card,
+    .recipe-card,
+    .category-grid a {
+      animation: none;
+    }
+  }
 }

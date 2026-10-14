@@ -73,8 +73,13 @@
         </div>
 
         <div class="pantry-controls">
-          <input type="text" id="pantrySearch" placeholder="Search items..." />
-          <select id="pantryFilter">
+          <input
+            type="text"
+            id="pantrySearch"
+            placeholder="Search items..."
+            aria-label="Search pantry items"
+          />
+          <select id="pantryFilter" aria-label="Filter by category">
             <option value="">All categories</option>
             <option value="Fruits">Fruits</option>
             <option value="Vegetables">Vegetables</option>
